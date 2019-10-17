@@ -5,6 +5,10 @@ const app = express();
 const PORT = process.env.PORT || 4300;
 app.listen(PORT);
 
+app.get('/', (req, res, next) => {
+    res.send("Movie Chatbot works");
+})
+
 app.get('/getMovieDetails', (req, res, next) => {
     console.log("get movie details");
     let api_url = `https://api.themoviedb.org/3/movie/550?api_key=c43584493dfea10989cdc04f99ffd285`;
