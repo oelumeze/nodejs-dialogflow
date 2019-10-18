@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 const API_URL = `https://api.themoviedb.org/discover/movie/`;
 const OMDB_API_KEY = 'f95fb581';
 const PORT = process.env.PORT || 4300;
-app.listen(PORT);
+
 
 app.get('/', (req, res, next) => {
     res.send("Movie Chatbot works");
@@ -119,7 +119,7 @@ app.get('/getMovieDetails', (req, res, next) => {
             })
         })
 })
-
+app.listen(PORT);
 console.log(`serve is listening on ${PORT}`);
 
 export default app;
