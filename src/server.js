@@ -1,16 +1,20 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import axios from 'axios';
 import CircularJSON from 'circular-json';
 import http from 'http';
 
+dotenv.config();
+
 const app = express();
+const PORT = process.env.PORT || 4300;
+app.listen(PORT);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 const API_URL = `https://api.themoviedb.org/discover/movie/`;
 const OMDB_API_KEY = 'f95fb581';
-const PORT = process.env.PORT || 4300;
 
 
 app.get('/', (req, res, next) => {
@@ -119,7 +123,7 @@ app.get('/getMovieDetails', (req, res, next) => {
             })
         })
 })
-app.listen(PORT);
+
 console.log(`serve is listening on ${PORT}`);
 
 export default app;
