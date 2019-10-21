@@ -8,7 +8,7 @@
     "build-babel": "babel -d ./build ./src/server.js -s",
     "build": "npm run clean && npm run build-babel",
     "dev": "nodemon -w src --exec babel-node --presets env src/server.js",
-    "start": "npm run build && node ./build/index.js",
+    "start": "npm run build && node ./build/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
