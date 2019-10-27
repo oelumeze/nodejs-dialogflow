@@ -14,11 +14,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 const API_URL = `https://api.themoviedb.org/discover/movie/`;
+const IP_ADDRESS_URL = `http://gd.geobytes.com/GetCityDetails`;
 const OMDB_API_KEY = 'f95fb581';
 
 
 app.get('/', (req, res, next) => {
     res.send("Movie Chatbot works");
+})
+
+app.get('/getIpAddres', async (req, res, next) => {
+    try {
+        let response = await axios.get(IP_ADDRESS_URL);
+        return res.status(200).json({
+            error: false,
+            success: true,
+            response: response
+        });
+    } catch (ex) {
+        return res.status(400).json({
+            error: true,
+            success: false,
+            message: "Unable to fetch your IP Address"
+        })
+    }
+    
 })
 
 const transformCircularJSON = (_response) => {
