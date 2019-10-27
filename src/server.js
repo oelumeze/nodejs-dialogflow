@@ -22,15 +22,19 @@ app.get('/', (req, res, next) => {
     res.send("Movie Chatbot works");
 })
 
-app.get('/getIpAddres', async (req, res, next) => {
+app.get('/getIpAddress', async (req, res, next) => {
     try {
         let response = await axios.get(IP_ADDRESS_URL);
-        return res.status(200).json({
-            error: false,
-            success: true,
-            response: response
-        });
+        console.log("response", response.data)
+        if (response) {
+            return res.status(200).json({
+                error: false,
+                success: true,
+                data: response.data
+            });
+        }
     } catch (ex) {
+        
         return res.status(400).json({
             error: true,
             success: false,
